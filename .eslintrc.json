@@ -5,7 +5,11 @@
         "es2021": true
     },
     "extends": [
+        "prettier",
         "airbnb-base"
+    ],
+    "plugins": [
+        "prettier"
     ],
     "overrides": [
     ],
@@ -13,5 +17,6 @@
         "ecmaVersion": "latest"
     },
     "rules": {
+        "prettier/prettier": ["error", { "singleQuote": true }]
     }
 }
