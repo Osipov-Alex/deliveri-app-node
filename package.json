@@ -15,8 +15,6 @@
   "scripts": {
     "start": "start index",
     "dev": "nodemon index",
-    "format:check": "prettier --check .",
-    "format:write": "prettier --write .",
     "lint:check": "eslint .",
     "lint:fix": "eslint --fix ."
   },
