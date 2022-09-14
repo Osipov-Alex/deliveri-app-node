@@ -1,41 +1,49 @@
-import Product from "../models/Product.js";
-import FileService from "./FileService.js";
+/* eslint-disable class-methods-use-this */
+/* eslint-disable prettier/prettier */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable import/extensions */
+import Product from '../models/Product.js';
+import FileService from './FileService.js';
 
 class ProductService {
   async create(product, image) {
-    const fileName = FileService.saveFile(image)
-    const createProduct = await Product.create({...product, image: fileName})
-    return createProduct
+    const fileName = FileService.saveFile(image);
+    const createProduct = await Product.create({ ...product, image: fileName });
+    return createProduct;
   }
 
   async getAll() {
     const products = await Product.find();
-    return products
+    return products;
   }
 
-  async getOne (id) {
+  async getOne(id) {
     if (!id) {
-      throw new Error("Don't haven't id")
+      throw new Error("Don't haven't id");
     }
-    const product = await Product.findById(id)
-    return product
+    const product = await Product.findById(id);
+    return product;
   }
 
-  async update (product) {
+  async update(product) {
     if (!product._id) {
-      throw new Error("Id don't found")
+      throw new Error("Id don't found");
     }
-      const updatedProduct = await Product.findByIdAndUpdate(product._id, product, { new: true })
-      return updatedProduct
-    }
+    const updatedProduct = await Product.findByIdAndUpdate(
+      product._id,
+      product,
+      { new: true },
+    );
+    return updatedProduct;
+  }
 
   async delete(id) {
-      if (!id) {
-        throw new Error("Id don't found") 
-      }
-      const product = await Product.findByIdAndDelete(id)
-      return product
-  } 
+    if (!id) {
+      throw new Error("Id don't found");
+    }
+    const product = await Product.findByIdAndDelete(id);
+    return product;
+  }
 }
 
-export default new ProductService()
+export default new ProductService();

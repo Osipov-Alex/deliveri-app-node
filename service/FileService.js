@@ -1,15 +1,17 @@
-import * as uuid from "uuid";
+/* eslint-disable class-methods-use-this */
+import * as uuid from 'uuid';
 import * as path from 'path';
 
 class FileService {
   saveFile(file) {
     try {
-      const fileName = uuid.v4() + ".png";
+      // eslint-disable-next-line prefer-template
+      const fileName = uuid.v4() + '.png';
       const filePath = path.resolve('static', fileName);
       file.mv(filePath);
-      return fileName
+      return fileName;
     } catch (e) {
-      console.log(e)
+      throw new Error(e);
     }
   }
 }

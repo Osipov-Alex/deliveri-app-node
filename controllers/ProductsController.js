@@ -1,51 +1,52 @@
-import Product from "../models/Product.js"; 
-import ProductService from "../service/ProductService.js"; 
+/* eslint-disable import/extensions */
+/* eslint-disable class-methods-use-this */
+import ProductService from '../service/ProductService.js';
 
 class ProductsController {
   async create(req, res) {
     try {
-      const product = await ProductService.create(req.body, req.files.image)
-      res.json(product)
-  } catch (e) {
-      res.status(500).json(e)
-  } 
+      const product = await ProductService.create(req.body, req.files.image);
+      res.json(product);
+    } catch (e) {
+      res.status(500).json(e);
+    }
   }
 
   async getAll(req, res) {
     try {
       const products = await ProductService.getAll();
-      return res.json(products )
+      return res.json(products);
     } catch (e) {
-      res.status(500).json(e)
+      return res.status(500).json(e);
     }
   }
 
   async getOne(req, res) {
     try {
-      const product = await ProductService.getOne(req.params.id)
-      return res.json(product)
+      const product = await ProductService.getOne(req.params.id);
+      return res.json(product);
     } catch (e) {
-      res.status(500).json(e)
+      return res.status(500).json(e);
     }
   }
 
-  async update (req, res) {
+  async update(req, res) {
     try {
-      const updatedProduct = await ProductService.update(req.body)
-      return res.json(updatedProduct)
+      const updatedProduct = await ProductService.update(req.body);
+      return res.json(updatedProduct);
     } catch (e) {
-      res.status(500).json(e)
+      return res.status(500).json(e);
     }
   }
 
   async delete(req, res) {
     try {
-      const product = await ProductService.delete(req.params.id)
-      res.json(product)
+      const product = await ProductService.delete(req.params.id);
+      res.json(product);
     } catch (e) {
-      res.status(500).json(e) 
+      res.status(500).json(e);
     }
-  } 
+  }
 }
 
-export default new ProductsController
+export default new ProductsController();
