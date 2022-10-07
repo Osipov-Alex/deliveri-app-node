@@ -2,7 +2,7 @@
 import * as uuid from 'uuid';
 import * as path from 'path';
 
-class FileService {
+class ImageService {
   saveFile(file) {
     try {
       // eslint-disable-next-line prefer-template
@@ -16,4 +16,4 @@ class FileService {
   }
 }
 
-export default new FileService();
+export default new ImageService();

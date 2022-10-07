@@ -6,8 +6,13 @@ import UserService from '../service/UserService.js';
 class OrderHistoryController {
   async create(req, res) {
     try {
-      await UserService.create(req.body);
-      await OrderHistoryService.create(req.body);
+      const user = await UserService.create(req.body);
+      const { _id } = user;
+      const order = {
+        ...req.body,
+        userId: _id,
+      };
+      await OrderHistoryService.create(order);
       res.status(201);
     } catch (e) {
       res.status(500).json(e);

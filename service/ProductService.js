@@ -3,11 +3,11 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable import/extensions */
 import Product from '../models/Product.js';
-import FileService from './FileService.js';
+import ImageService from './ImageService.js';
 
 class ProductService {
   async create(product, image) {
-    const fileName = FileService.saveFile(image);
+    const fileName = ImageService.saveFile(image);
     const createProduct = await Product.create({ ...product, image: fileName });
     return createProduct;
   }
